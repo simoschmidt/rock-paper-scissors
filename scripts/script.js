@@ -14,31 +14,16 @@ function getComputerChoice () {
       break;
   }
   console.log('computer chose ' + computerChoice);
-  console.log(randomNumber);
+  console.log('random number is ' + randomNumber);
 //  return randomNumber;
 }
 
 function getHumanChoice () {
   let userInput = prompt('Rock, paper or scissors?');
   userInput = userInput.toLocaleLowerCase();
-  if (userInput != "rock" || userInput != "paper" || userInput != "scissors") {
-    prompt('That\'s not one of the options :) Please select Rock, paper or scissors');
+  while (userInput != 'rock' && userInput != 'paper' && userInput != 'scissors') {
+    userInput = prompt('That\'s not one of the options :) Please select Rock, paper or scissors')
   }
-  /*
-  switch (userInput.toLocaleLowerCase()) {
-    case "rock":
-      humanChoice = 'rock';
-      break;
-    case "paper":
-      humanChoice = 'paper';
-      break;
-    case "scissors":
-      humanChoice = 'scissors';
-      break;
-  }
-  console.log('user chose ' + humanChoice);
-  return userInput;
-  */
   console.log('user chose ' + userInput);
 }
 
