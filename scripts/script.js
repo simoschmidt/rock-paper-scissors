@@ -1,4 +1,5 @@
-// console.log("Hello World")
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice () {
   let randomNumber = Math.floor(Math.random () * 3) + 1;
@@ -13,19 +14,34 @@ function getComputerChoice () {
       computerChoice = 'scissors';
       break;
   }
-  console.log('computer chose ' + computerChoice);
-  console.log('random number is ' + randomNumber);
-//  return randomNumber;
+  console.log ('computer chose ' + computerChoice);
+  console.log ('random number is ' + randomNumber);
+  return computerChoice;
 }
 
 function getHumanChoice () {
-  let userInput = prompt('Rock, paper or scissors?');
-  userInput = userInput.toLocaleLowerCase();
-  while (userInput != 'rock' && userInput != 'paper' && userInput != 'scissors') {
-    userInput = prompt('That\'s not one of the options :) Please select Rock, paper or scissors')
+  let humanChoice = prompt ('Rock, paper or scissors?');
+  humanChoice = humanChoice.toLocaleLowerCase ();
+  while (humanChoice != 'rock' && humanChoice != 'paper' && humanChoice != 'scissors') {
+    humanChoice = prompt ('That\'s not one of the options :) Please select Rock, paper or scissors')
+    humanChoice = humanChoice.toLocaleLowerCase ();
   }
-  console.log('user chose ' + userInput);
+  console.log('user chose ' + humanChoice);
+  return humanChoice;
 }
 
-getComputerChoice ();
-getHumanChoice ();
+function playRound (humanChoice, computerChoice) {
+  if ((humanChoice == 'rock' && computerChoice == 'paper') || 
+  (humanChoice == 'paper' && computerChoice == 'scissors') || (humanChoice == 'scissors' && computerChoice == 'rock')) {
+      console.log ('You lose! ' + computerChoice + ' beats ' + humanChoice + '.')
+    } else {
+      console.log ('huh');
+    }
+    console.log(humanChoice)
+    console.log(computerChoice)
+}
+
+const computerSelection = getComputerChoice ();
+const humanSelection = getHumanChoice ();
+
+playRound (humanSelection, computerSelection);
