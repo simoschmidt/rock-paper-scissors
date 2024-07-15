@@ -20,7 +20,34 @@ function getComputerChoice () {
   return computerChoice;
 }
 
+/*
+const rockBtn = document.getElementById("rockBtn");
+const paperBtn = document.getElementById("paperBtn");
+const scissorsBtn = document.getElementById("scissorsBtn");
+*/
+
 function getHumanChoice () {
+  document.addEventListener("click", function(event) {
+    // check which link was clicked using the event.target.id property
+    switch (event.target.id) {
+      case "rockBtn":
+        // do something when link1 is clicked
+        console.log("You clicked rockBtn");
+        break;
+      case "paperBtn":
+        // do something when link2 is clicked
+        console.log("You clicked paperBtn");
+        break;
+      case "scissorsBtn":
+        // do something when link3 is clicked
+        console.log("You clicked scissorsBtn");
+        break;
+      default:
+        // do nothing if none of the links were clicked
+        break;
+    }
+  });
+  /*
   let humanChoice = prompt ('Rock, paper or scissors?');
   humanChoice = humanChoice.toLocaleLowerCase ();
   while (humanChoice != 'rock' && humanChoice != 'paper' && humanChoice != 'scissors') {
@@ -29,6 +56,7 @@ function getHumanChoice () {
   }
   console.log ('Human chose ' + humanChoice + '.');
   return humanChoice;
+  */
 }
 
 function playGame () {
@@ -48,7 +76,8 @@ function playGame () {
     console.log('---')
   }
 
-  for (let i = 0; i < 5; i++) {
+//  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 1; i++) {
     const computerSelection = getComputerChoice();
     const humanSelection = getHumanChoice();
     playRound(humanSelection, computerSelection);
@@ -64,3 +93,10 @@ function playGame () {
 }
 
 playGame ();
+
+/*
+rockBtn.addEventListener("click", () => {
+  console.log("Rock has been pressed!")
+  playRound(humanSelection, computerSelection);
+});
+*/
