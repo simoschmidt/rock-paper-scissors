@@ -4,6 +4,7 @@ let drawScore = 0;
 
 function getComputerChoice () {
   let randomNumber = Math.floor(Math.random () * 3) + 1;
+  let computerChoice;
   switch (randomNumber) {
     case 1:
       computerChoice = 'rock';
@@ -21,44 +22,6 @@ function getComputerChoice () {
 }
 
 /*
-const rockBtn = document.getElementById("rockBtn");
-const paperBtn = document.getElementById("paperBtn");
-const scissorsBtn = document.getElementById("scissorsBtn");
-*/
-
-function getHumanChoice () {
-  document.addEventListener("click", function(event) {
-    // check which link was clicked using the event.target.id property
-    switch (event.target.id) {
-      case "rockBtn":
-        // do something when link1 is clicked
-        console.log("You clicked rockBtn");
-        break;
-      case "paperBtn":
-        // do something when link2 is clicked
-        console.log("You clicked paperBtn");
-        break;
-      case "scissorsBtn":
-        // do something when link3 is clicked
-        console.log("You clicked scissorsBtn");
-        break;
-      default:
-        // do nothing if none of the links were clicked
-        break;
-    }
-  });
-  /*
-  let humanChoice = prompt ('Rock, paper or scissors?');
-  humanChoice = humanChoice.toLocaleLowerCase ();
-  while (humanChoice != 'rock' && humanChoice != 'paper' && humanChoice != 'scissors') {
-    humanChoice = prompt ('That\'s not one of the options :) Please select Rock, paper or scissors')
-    humanChoice = humanChoice.toLocaleLowerCase ();
-  }
-  console.log ('Human chose ' + humanChoice + '.');
-  return humanChoice;
-  */
-}
-
 function playGame () {
   function playRound (humanChoice, computerChoice) {
     if ((humanChoice == 'rock' && computerChoice == 'paper') || 
@@ -92,11 +55,38 @@ function playGame () {
    }
 }
 
-playGame ();
-
-/*
-rockBtn.addEventListener("click", () => {
-  console.log("Rock has been pressed!")
-  playRound(humanSelection, computerSelection);
-});
 */
+
+function playRound(humanChoice) {
+  let computerChoice = getComputerChoice();
+  if ((humanChoice == 'rock' && computerChoice == 'paper') || 
+  (humanChoice == 'paper' && computerChoice == 'scissors') || 
+  (humanChoice == 'scissors' && computerChoice == 'rock')) {
+      computerScore ++;
+      console.log ('You lose! ' + computerChoice[0].toUpperCase() + computerChoice.slice(1) + ' beats ' + humanChoice + '.');
+    } else if (humanChoice === computerChoice) {
+      drawScore ++;
+      console.log ('Draw!');
+    } else {
+      humanScore ++;
+      console.log ('You win! ' + humanChoice[0].toUpperCase() + humanChoice.slice(1) + ' beats ' + computerChoice + '.');
+    }
+  console.log('---')
+}
+
+document.addEventListener("click", function(event) {
+  switch (event.target.id) {
+    case "rockBtn":
+      console.log ('Human chose rock.');
+      playRound('rock');
+      break;
+    case "paperBtn":
+      console.log ('Human chose paper.');
+      playRound('paper');
+      break;
+    case "scissorsBtn":
+      console.log ('Human chose scissors.');
+      playRound('scissors');
+      break;
+  }
+});
